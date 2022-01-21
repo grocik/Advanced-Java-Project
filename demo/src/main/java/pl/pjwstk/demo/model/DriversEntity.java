@@ -1,4 +1,4 @@
-package pl.pjwstk.demo.contract;
+package pl.pjwstk.demo.model;
 
 import javax.persistence.*;
 
