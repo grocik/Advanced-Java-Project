@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.pjwstk.demo.model.PointEntity;
 import pl.pjwstk.demo.repository.DriversRepository;
 import pl.pjwstk.demo.repository.PointRepository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,15 +17,8 @@ public class PointsService {
     PointRepository pointRepository;
     @Autowired
     DriversRepository driversRepository;
-    HashMap<Integer, PointEntity> segregatedPoints = new HashMap<>();
-    int a = 1;
 
-    public HashMap<Integer, PointEntity> convert(int id){
-        List<PointEntity> pointEntities = new ArrayList<>(pointRepository.findByDriverFk(id));
-        pointEntities.forEach(pointEntity -> {
-            segregatedPoints.put(a,pointEntity);
-            a++;
-        });
-        return segregatedPoints;
+    public List<PointEntity> get(int id){
+        return pointRepository.findByDriverFk(id);
     }
 }
