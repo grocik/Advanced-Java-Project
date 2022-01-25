@@ -1,4 +1,4 @@
-package pl.pjwstk.demo.model;
+package pl.pjwstk.demo.model.Entity;
 
 import javax.persistence.*;
 
@@ -21,6 +21,16 @@ public class PointEntity {
     @Basic
     @Column(name = "driver_fk")
     private Integer driverFk;
+
+    public PointEntity(){};
+
+    public PointEntity(int idpoint,String city, String street, String stnumber, Integer driverFk) {
+        this.idpoint = idpoint;
+        this.city = city;
+        this.street = street;
+        this.stnumber = stnumber;
+        this.driverFk = driverFk;
+    }
 
     public int getIdpoint() {
         return idpoint;

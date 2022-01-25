@@ -1,7 +1,7 @@
 package pl.pjwstk.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.pjwstk.demo.model.PointEntity;
+import pl.pjwstk.demo.model.Entity.PointEntity;
 
 import javax.persistence.Column;
 import java.util.List;

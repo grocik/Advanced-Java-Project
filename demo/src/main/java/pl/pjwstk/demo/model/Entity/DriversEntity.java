@@ -1,4 +1,4 @@
-package pl.pjwstk.demo.model;
+package pl.pjwstk.demo.model.Entity;
 
 import javax.persistence.*;
 

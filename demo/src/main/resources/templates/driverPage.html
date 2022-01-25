@@ -20,34 +20,38 @@
                 <td><a class="nav-link" th:href="@{/map/google}">Map</a></td>
             </li>
             <li class="nav-item">
-                <td><a class="nav-link" th:href="@{/drivers/main}">Drivers</a></td>
+                <td><a class="nav-link" th:href="@{/route/calculator}">FastesRouteCalculator</a></td>
             </li>
         </ul>
     </div>
-    <form th:action="@{/route/calculator/calculate}">
-        <label for="Did">Find By Driver id:</label><br>
-        <input type="number" id="Did" name="id" th:name="id"><br>
+    <form th:action="@{/drivers/main/id}">
+        <label for="driverid">Find By Driver id:</label><br>
+        <input type="number" id="driverid" name="id" th:name="id"><br>
         <input type="submit" value="Find">
     </form>
+    <td><form th:action="@{/drivers/main/surename}">
+        <label for="driverSurename">Find By Driver Surename:</label><br>
+        <input type="text" id="driverSurename" name="surename" th:name="surename"><br>
+        <input type="submit" value="Find">
+    </form></td>
+    <td><form th:action="@{/drivers/main/name}">
+        <label for="driverName">Find By Driver Name:</label><br>
+        <input type="text" id="driverName" name="name" th:name="name"><br>
+        <input type="submit" value="Find">
+    </form></td>
+
 </nav>
 <table class="table table-striped table-dark">
     <thead>
-    <th scope="col">#</th>
     <th scope="col">Driver Id</th>
-    <th scope="col">City</th>
-    <th scope="col">Street</th>
-    <th scope="col">St.Number</th>
+    <th scope="col">Name</th>
+    <th scope="col">Surename</th>
     </thead>
     <tbody>
-    <tr th:each="c: ${optimized}">
-        <td th:text="${c.idpoint}"></td>
-        <td th:text="${c.driverFk}"></td>
-        <td th:text="${c.city}"></td>
-        <td th:text="${c.street}"></td>
-        <td th:text="${c.stnumber}"></td>
-    </tr>
-    </tbody>
-</table>
+    <tr th:each="c: ${drivers}">
+        <td th:text="${c.idDriver}"></td>
+        <td th:text="${c.imie}"></td>
+        <td th:text="${c.nazwisko}"></td>
     </tr>
     </tbody>
 </table>
