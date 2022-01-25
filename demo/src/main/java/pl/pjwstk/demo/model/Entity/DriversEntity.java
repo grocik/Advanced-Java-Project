@@ -16,6 +16,13 @@ public class DriversEntity {
     @Column(name = "nazwisko")
     private String nazwisko;
 
+    public DriversEntity(){}
+    public DriversEntity(int idDriver, String imie, String nazwisko) {
+        this.idDriver = idDriver;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+    }
+
     public int getIdDriver() {
         return idDriver;
     }
