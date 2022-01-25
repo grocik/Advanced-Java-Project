@@ -37,12 +37,18 @@ public class OptimizedRouteController {
     }
 
     @GetMapping(path = "/calculator/calculate")
-    public String findFastesRoute(Model model, @RequestParam(value = "id",required = false) int id) {
-        Root root = rest.getForEntity("https://maps.googleapis.com/maps/api/directions/json?key="+apiKey+fastesRouteService
-                .makeRequest(pointsService.getByDriverFK(id)), Root.class).getBody();
-        System.out.println(root.routes.get(0).getWaypoint_order());
-        List<PointEntity> pointEntities = fastesRouteService.correctOrder(root.routes.get(0).getWaypoint_order(),pointsService.getByDriverFK(id));
-        model.addAttribute("optimized",pointEntities);
-        return "optimizedRutePage";
+    public String findFastesRoute(Model model, @RequestParam(value = "id",required = false) String id) {
+        if (id.isEmpty()){
+            return "optimizedRutePage";
+        }
+        else {
+            String request = fastesRouteService.makeRequest(pointsService.getByDriverFK(Integer.parseInt(id)));
+            Root root = rest.getForEntity("https://maps.googleapis.com/maps/api/directions/json?key=" + apiKey + request, Root.class).getBody();
+            System.out.println(root.routes.get(0).getWaypoint_order());
+            List<PointEntity> pointEntities = fastesRouteService.correctOrder(root.routes.get(0).getWaypoint_order(), pointsService.getByDriverFK(Integer.parseInt(id)));
+            model.addAttribute("optimized", pointEntities);
+            return "optimizedRutePage";
+        }
+
     }
 }

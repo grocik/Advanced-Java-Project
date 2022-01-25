@@ -35,7 +35,7 @@ public class addDelController {
             return "pointAddPage";
         }
         else {
-            pointsService.addPoint(pointsService.getAllPoints().size(),city,street,stNumber,Integer.parseInt(fkKey));
+            pointsService.addPoint(pointsService.getAllPoints().size()+2,city,street,stNumber,Integer.parseInt(fkKey));
             return "mainPage";
         }
     }
